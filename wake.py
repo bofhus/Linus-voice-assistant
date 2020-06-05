@@ -29,8 +29,8 @@ while True:
 
     text = json.loads(getAudio())
     wake = text["text"]
-
-    if "hello" in wake:
+# Testing
+    if "linus" in wake:
         commands.greetVoice()
         
     
