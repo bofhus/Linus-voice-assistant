@@ -28,6 +28,6 @@ def wakeListening():
         text = json.loads(getwakeAudio())
         wake = text["text"]
     
-        if "hello" in wake:
+        if "linus" in wake:
             break   
 
