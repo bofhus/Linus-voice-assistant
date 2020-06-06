@@ -2,7 +2,6 @@
 
 import os
 import pyaudio
-import commands
 import json
 
 from vosk import Model, KaldiRecognizer
@@ -25,14 +24,13 @@ def getAudio():
             if rec.AcceptWaveform(data):
                 return(rec.Result())
 
-# Testing
-while True:
-    getAudio()
-    text = json.loads(getAudio())
-    wake = text["text"]
+# Listening
+def wakeListening():
+    while True:
+        getAudio()
+        text = json.loads(getAudio())
+        wake = text["text"]
     
-    if "hello" in wake:
-        commands.greetVoice()
-              
-    
+        if "hello" in wake:
+            break   
 
