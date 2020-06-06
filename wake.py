@@ -12,13 +12,12 @@ from vosk import Model, KaldiRecognizer
 model = Model("model")
 rec = KaldiRecognizer(model, 16000)
 
-# Wake the bot up
+# Capture the mic
 p = pyaudio.PyAudio()
 stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
 stream.start_stream()
 
-while True:
-    def getAudio():
+def getAudio():
         while True:
             data = stream.read(4000)
             if len(data) == 0:
@@ -26,12 +25,18 @@ while True:
             if rec.AcceptWaveform(data):
                 return(rec.Result())
 
-
+while True:
+    getAudio()
     text = json.loads(getAudio())
     wake = text["text"]
-# Testing
-    if "linus" in wake:
+    
+    if "hello" in wake:
         commands.greetVoice()
+        commands.query()
+# Testing
+
+
+
         
     
 
