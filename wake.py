@@ -25,6 +25,7 @@ def getAudio():
             if rec.AcceptWaveform(data):
                 return(rec.Result())
 
+# Testing
 while True:
     getAudio()
     text = json.loads(getAudio())
@@ -32,11 +33,6 @@ while True:
     
     if "hello" in wake:
         commands.greetVoice()
-        commands.query()
-# Testing
-
-
-
-        
+              
     
 
